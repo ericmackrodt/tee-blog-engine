@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => $this->e($data->title)]) ?>
+<?php $this->layout(withVariant('layout'), ['title' => $this->e($data->title)]) ?>
 <?php $this->push('seo') ?>
 <meta name="description" content="<?= $this->e($data->description); ?>">
 <link rel="canonical" href="http://www.theericexperiment.com/post/<?= $this->e($data->slug); ?>" />

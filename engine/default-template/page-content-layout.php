@@ -1,4 +1,4 @@
-<?php $this->layout('layout', []) ?>
+<?php $this->layout(withVariant('layout'), []) ?>
 <?php
 $contentWidth = 600;
 if (!empty($this->section('left-content'))) {

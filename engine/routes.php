@@ -29,9 +29,24 @@ SimpleRouter::get('/post/{post}', function ($post) use ($renderPost) {
   return $renderPost($post);
 });
 
-SimpleRouter::get('/{page}', function ($page) use ($renderPage) {
-  return $renderPage($page);
-});
+// SimpleRouter::group(['defaultParameterRegex' => '/(.+)/is'], function () use ($renderPage) {
+//   SimpleRouter::get('/{parameter}', function ($parameter) use ($renderPage) {
+//     echo "comeon";
+//   });
+// });
+
+// SimpleRouter::get('/', function ($page) use ($renderPage) {
+//   echo var_dump($page);
+// })->setMatch('/(.+)/is');
+
+SimpleRouter::get('/{param}', function ($param = null) use ($renderPage) {
+  return $renderPage($param);
+}, ['defaultParameterRegex' => '.+']);
+
+// SimpleRouter::get('/{page}*', function ($page) use ($renderPage) {
+//   echo var_dump($page);
+//   return $renderPage($page);
+// });
 
 // Start the routing
 SimpleRouter::start();

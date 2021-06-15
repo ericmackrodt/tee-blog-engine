@@ -69,17 +69,17 @@
         },
         {
             "name": "pecee/simple-router",
-            "version": "4.3.5.0",
-            "version_normalized": "4.3.5.0",
+            "version": "4.3.6.1",
+            "version_normalized": "4.3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skipperbent/simple-php-router.git",
-                "reference": "319ce7a569e5d47782052c743fc6549e7827a250"
+                "reference": "e5552a88cfd482099772ec09cfb154b5cba02461"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skipperbent/simple-php-router/zipball/319ce7a569e5d47782052c743fc6549e7827a250",
-                "reference": "319ce7a569e5d47782052c743fc6549e7827a250",
+                "url": "https://api.github.com/repos/skipperbent/simple-php-router/zipball/e5552a88cfd482099772ec09cfb154b5cba02461",
+                "reference": "e5552a88cfd482099772ec09cfb154b5cba02461",
                 "shasum": ""
             },
             "require": {
@@ -88,9 +88,13 @@
             },
             "require-dev": {
                 "mockery/mockery": "^1",
+                "phpstan/phpstan": "^0",
+                "phpstan/phpstan-deprecation-rules": "^0",
+                "phpstan/phpstan-phpunit": "^0",
+                "phpstan/phpstan-strict-rules": "^0",
                 "phpunit/phpunit": "^7"
             },
-            "time": "2021-05-20T13:19:00+00:00",
+            "time": "2021-06-15T08:16:25+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {

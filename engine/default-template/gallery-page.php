@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => $this->e($name)]) ?>
+<?php $this->layout(withVariant('layout'), ['title' => $this->e($name)]) ?>
 <center>
   <table width="600" border="0">
     <tr>

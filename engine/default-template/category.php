@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => $this->e($name)]) ?>
+<?php $this->layout(withVariant('layout'), ['title' => $this->e($name)]) ?>
 <center>
   <h2>Category: <?= $this->e($name) ?></h2>
   <?php $this->insert('categories') ?>

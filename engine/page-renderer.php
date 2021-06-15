@@ -1,20 +1,20 @@
 <?php
 
-function injectMd($input)
+function injectMd($input, $baseFolder)
 {
     preg_match('/\[inject-md[\s]+"(.+)"\]/', $input, $output);
     if (empty($output)) {
         return $input;
     }
 
-    $injectPath = BLOG_PAGE_PATH . $output[1];
+    $injectPath = joinPaths(BLOG_PAGE_PATH, $baseFolder, $output[1]);
 
     $md = file_get_contents($injectPath);
 
     return str_replace($output[0], $md, $input);
 }
 
-function splitContents($input)
+function splitContents($input, $baseFolder)
 {
     $lines = explode(PHP_EOL, $input);
     $body = ['left-content' => '', 'content' => '', 'right-content' => ''];
@@ -31,7 +31,7 @@ function splitContents($input)
             $previous_content = 'content';
         }
 
-        $line = injectMd($line);
+        $line = injectMd($line, $baseFolder);
 
         $body[$previous_content] = $body[$previous_content] . $line . PHP_EOL;
     }
@@ -53,7 +53,11 @@ function getPage(string $page)
     global $templates;
     $object = loadPageMd($page);
 
-    $contents = splitContents($object->body());
+    $explodedPath = explode('/', $page);
+    array_pop($explodedPath);
+    $baseFolder = implode('/', $explodedPath);
+
+    $contents = splitContents($object->body(), $baseFolder);
 
     $templates->addData(
         [

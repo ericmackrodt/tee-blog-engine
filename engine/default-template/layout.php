@@ -14,14 +14,14 @@
 <body bgcolor="#ffffff" text="#000000">
     <center>
         <h1><?= $this->e($siteName) ?></h1>
-        <?php $this->insert('main-menu') ?>
+        <?php $this->insert(withVariant('main-menu')) ?>
     </center>
 
     <?= $this->section('content') ?>
 
     <center>
         <br>
-        <?php $this->insert('tags') ?>
+        <?php $this->insert(withVariant('tags')) ?>
         <br>
         Copyright © 1988-2021 Eric Mackrodt
         <br>

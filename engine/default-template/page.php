@@ -1,4 +1,4 @@
-<?php $this->layout('page-content-layout', []) ?>
+<?php $this->layout(withVariant('page-content-layout'), []) ?>
 
 <?php if (!empty($data["left-content"])) : ?>      
   <?php $this->push('left-content') ?>

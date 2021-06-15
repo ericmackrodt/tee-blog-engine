@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '51753310029a2b687dfc5eed9a2a1a912eb1e308',
+        'reference' => '8ba21812d4bf7d32934db8463095af5ebee2fadc',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '51753310029a2b687dfc5eed9a2a1a912eb1e308',
+            'reference' => '8ba21812d4bf7d32934db8463095af5ebee2fadc',
             'dev_requirement' => false,
         ),
         'league/plates' => array(
@@ -29,12 +29,12 @@
             'dev_requirement' => false,
         ),
         'pecee/simple-router' => array(
-            'pretty_version' => '4.3.5.0',
-            'version' => '4.3.5.0',
+            'pretty_version' => '4.3.6.1',
+            'version' => '4.3.6.1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../pecee/simple-router',
             'aliases' => array(),
-            'reference' => '319ce7a569e5d47782052c743fc6549e7827a250',
+            'reference' => 'e5552a88cfd482099772ec09cfb154b5cba02461',
             'dev_requirement' => false,
         ),
         'spatie/yaml-front-matter' => array(
