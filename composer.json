@@ -1,0 +1,7 @@
+{
+    "require": {
+        "league/plates": "^3.4",
+        "pecee/simple-router": "^4.3",
+        "spatie/yaml-front-matter": "^2.0"
+    }
+}

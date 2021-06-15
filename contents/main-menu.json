@@ -1,0 +1,12 @@
+[
+  {
+    "icon": "/assets/home.png",
+    "path": "/",
+    "label": "Home"
+  },
+  {
+    "icon": "/assets/home.png",
+    "path": "/page1",
+    "label": "Page 1"
+  }
+]
