@@ -16,9 +16,4 @@
       </font>
     </td>
   </tr>
-  <tr>
-    <td colspan="2">
-      <img src="/assets/nothing.gif" width="470" height="2">
-    </td>
-  </tr>
 </table>

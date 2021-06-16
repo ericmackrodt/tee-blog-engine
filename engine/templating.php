@@ -7,6 +7,7 @@ $templates = new \League\Plates\Engine(__DIR__ . '/default-template');
 
 $json = file_get_contents($config["main-menu"]);
 $mainMenu = json_decode($json);
+$variant = getVariant();
 
 function addData($mainMenu, $variantFn = null)
 {

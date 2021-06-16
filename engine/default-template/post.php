@@ -22,7 +22,6 @@
 <meta name="twitter:image" content="https://www.theericexperiment.com/post/asset/143/143/@image?fit=cover" />
 <?php $this->end() ?>
 
-<img src="/assets/nothing.gif" width="1" height="5"><br><img src="/assets/black_pixel.gif" width="100%" height="1"><br><img src="/assets/nothing.gif" width="1" height="5"><br>
 <center>
   <table border="0" width="600">
     <tr>

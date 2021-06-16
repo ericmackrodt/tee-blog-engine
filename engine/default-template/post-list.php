@@ -14,9 +14,6 @@
               <a href="/post/<?= $post->slug ?>">
                 <img src="/img.php?p=<?= $image ?>&w=143&fit=cover&aspectRatio=16:9" border="0" /></a>
             </td>
-            <td width="10" valign="top">
-              <img src="/assets/nothing.gif" width="10" height="1">
-            </td>
             <td valign="top" width="397">
               <a href="/post/<?= $post->slug ?>">
                 <font size="3" color="#000000" face="arial">

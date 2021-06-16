@@ -86,15 +86,15 @@ class BlogParsedown extends Parsedown
       return null;
     }
 
-    if (!preg_match('/[ #]*{(' . $this->regexAttribute . '+)}[ ]*$/', $text, $matches, PREG_OFFSET_CAPTURE)) {
-      return $Block;
-    };
-
-    $attributeString = $matches[1][0];
-    $attributes = $this->parseAttributeData($attributeString);
-    $content = substr($text, 0, $matches[0][1]);
-
     $strLevel = strval($level);
+    $attributes = array();
+    $content = $text;
+
+    if (preg_match('/[ #]*{(' . $this->regexAttribute . '+)}[ ]*$/', $text, $matches, PREG_OFFSET_CAPTURE)) {
+      $attributeString = $matches[1][0];
+      $attributes = $this->parseAttributeData($attributeString);
+      $content = substr($text, 0, $matches[0][1]);
+    };
 
     return [
       'extent' => strlen($fullText),
@@ -259,6 +259,8 @@ class BlogParsedown extends Parsedown
 
     if (preg_match('/name: "(.+)"/', $line['body'], $nameMatch)) {
       $block["download-contents"]["name"] = $nameMatch[1];
+      $id = preg_replace("/[\s\.,]+/", "", $nameMatch[1]);
+      $block["download-contents"]["id"] = strtolower($id);
       return $block;
     }
 

@@ -1,5 +1,5 @@
 <?php
-function getGalleries(string $type, string $slug, string $variant)
+function getGalleries(string $type, string $slug)
 {
   global $templates;
 
@@ -15,7 +15,7 @@ function getGalleries(string $type, string $slug, string $variant)
   return (object)[
     'title' => $object->title,
     'slug' => $object->slug,
-    'galleries' => parseGalleries($object->body(), $templates, $variant),
+    'galleries' => parseGalleries($object->body(), $templates),
   ];
 }
 
@@ -23,7 +23,7 @@ return function (string $type, string $slug, string $gallery) use ($templates) {
   $parsedUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
   parse_str($parsedUrl, $query);
   $img = intval($query["img"]);
-  $data = getGalleries($type, $slug, 'retro');
+  $data = getGalleries($type, $slug, getVariant());
 
   $index = array_search($gallery, array_column($data->galleries, "id"));
 
