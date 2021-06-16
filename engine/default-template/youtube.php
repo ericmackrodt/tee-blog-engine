@@ -1,4 +1,3 @@
 <center>
-  <a href="%1" target="_blank"><img src="https://img.youtube.com/vi/<?= $this->e($videoId) ?>/0.jpg" alt="%5" border="0" /></a>
-  <br>
+  <iframe width="560" height="315" src="<?= $embed_url ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>

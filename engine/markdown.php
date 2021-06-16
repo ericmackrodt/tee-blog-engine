@@ -13,7 +13,7 @@ class BlogParsedown extends Parsedown
 
     $this->InlineTypes['!'][] = 'Youtube';
 
-    $this->inlineMarkerList .= '!';
+    // $this->inlineMarkerList .= '!';
 
     $this->BlockTypes['['][] = 'PageMenu';
     $this->BlockTypes['['][] = 'FileDownload';
@@ -102,6 +102,22 @@ class BlogParsedown extends Parsedown
     ];
   }
 
+  ## Image
+
+  protected function inlineImage($Excerpt)
+  {
+    $Inline = parent::inlineImage($Excerpt);
+
+    if (!isset($Inline)) {
+      return;
+    }
+
+    return [
+      'extent' => $Inline["extent"],
+      'element' => ['rawHtml' =>  $this->templates->render(withVariant('image'), ['attributes' => $Inline['element']['attributes']])],
+    ];
+  }
+
   ##
   ## Blog parsedown stuff
   ##
@@ -174,9 +190,23 @@ class BlogParsedown extends Parsedown
         return null;
       }
 
+      preg_match('/t=(.+)$/', $url, $timestamp);
+
+      $embedUrl = "https://www.youtube.com/embed/{$urlMatches[1]}?rel=0";
+
+      if (isset($timestamp)) {
+        $embedUrl .= "&start={$timestamp[1]}";
+      }
+
       return [
         'extent' => strlen($fullMatch),
-        'element' => ['rawHtml' =>  $this->templates->render(withVariant("youtube"), ['variant' => 'modern', 'videoId' => $urlMatches[1], 'title' => $title])],
+        'element' => ['rawHtml' =>  $this->templates->render(withVariant("youtube"), [
+          'variant' => 'modern',
+          'videoId' => $urlMatches[1],
+          'title' => $title,
+          'full_url' => $url,
+          'embed_url' => $embedUrl
+        ])],
       ];
     }
 

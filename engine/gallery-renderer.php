@@ -8,7 +8,7 @@ function getGalleries(string $type, string $slug, string $variant)
       $object = loadPageMd($slug);
       break;
     case "posts":
-      $object = loadPostMd($slug);
+      list('object' => $object) = loadPostMd($slug);
       break;
   }
 
