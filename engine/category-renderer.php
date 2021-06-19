@@ -1,5 +1,4 @@
 <?php
-
 return function () use ($templates) {
   $parsedUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
   parse_str($parsedUrl, $query);
@@ -14,6 +13,7 @@ return function () use ($templates) {
     }
     return false;
   });
+
   return $templates->render(withVariant('category'), [
     'name' => $category->name,
     'posts' => $filteredPosts,

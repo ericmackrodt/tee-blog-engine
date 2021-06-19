@@ -8,6 +8,7 @@ try {
   require 'engine/variant-selector.php';
   require 'engine/file-loader.php';
   require 'engine/posts-processor.php';
+  require 'engine/paginator.php';
   require 'engine/gallery-parser.php';
   require 'engine/templating.php';
   require 'engine/markdown.php';

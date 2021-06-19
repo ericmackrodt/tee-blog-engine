@@ -7,6 +7,7 @@ $renderHome = require "home-renderer.php";
 $renderPost = require "post-renderer.php";
 $renderCategory = require "category-renderer.php";
 $renderTag = require "tag-renderer.php";
+$renderPosts = require "posts-renderer.php";
 $renderGallery = require "gallery-renderer.php";
 
 SimpleRouter::get('/', function () use ($renderHome) {
@@ -19,6 +20,10 @@ SimpleRouter::get('/category', function () use ($renderCategory) {
 
 SimpleRouter::get('/tag', function () use ($renderTag) {
   return $renderTag();
+});
+
+SimpleRouter::get('/posts', function () use ($renderPosts) {
+  return $renderPosts();
 });
 
 SimpleRouter::get('/gallery/{type}/{slug}/{gallery}', function ($type, $slug, $gallery) use ($renderGallery) {

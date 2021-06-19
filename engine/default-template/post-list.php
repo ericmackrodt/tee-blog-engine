@@ -1,11 +1,14 @@
+<?php
+$pagination = createPagination($posts);
+?>
 <table width="600">
   <tr>
-    <td>
+    <td colspan="2">
       <?php
-      $len = count($posts);
+      $len = count($pagination->posts);
       $i = 0;
       ?>
-      <?php foreach ($posts as $post) : ?>
+      <?php foreach ($pagination->posts as $post) : ?>
         <?php $isLast = $i == $len - 1; ?>
         <?php $image = $post->full_path . $post->image; ?>
         <table width="600" cellpadding="0" cellspacing="0" border="0">
@@ -43,4 +46,19 @@
       <?php endforeach; ?>
     </td>
   </tr>
+  <?php if (!$hide_pagination) : ?>
+    <tr>
+      <?php if ($pagination->previous_page != null) : ?>
+        <td>
+          <a href="<?= $pagination->previous_page ?>">
+            << newer</a>
+        </td>
+      <?php endif; ?>
+      <?php if ($pagination->next_page != null) : ?>
+        <td align="right">
+          <a href="<?= $pagination->next_page ?>">older >></a>
+        </td>
+      <?php endif; ?>
+    </tr>
+  <?php endif; ?>
 </table>

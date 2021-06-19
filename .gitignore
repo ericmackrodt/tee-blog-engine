@@ -104,5 +104,6 @@ dist
 .tern-port
 
 templates/
+contents/
 
 custom_variant_selector.php
