@@ -11,22 +11,22 @@ if (!empty($this->section('right-content'))) {
 ?>
 
 <center>
-  <table cellspacing="0" cellpadding="0" border="0" width="600">
+  <table cellspacing="0" cellpadding="0" border="0">
     <tr>
       <?php if (!empty($this->section('left-content'))) : ?>
-        <td valign="top" width="120">
+        <td valign="top" width="20%">
           <?= $this->section('left-content') ?>
         </td>
       <?php endif; ?>
 
-      <td valign="top" width="<?= $contentWidth ?>">
+      <td valign="top">
         <font face="arial" size="-1">
           <?= $this->section('content') ?>
         </font>
       </td>
 
       <?php if (!empty($this->section('right-content'))) : ?>
-        <td valign="top" width="120">
+        <td valign="top" width="20%">
           <?= $this->section('right-content') ?>
         </td>
       <?php endif; ?>

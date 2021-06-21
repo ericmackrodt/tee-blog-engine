@@ -34,8 +34,7 @@ function getNewSize($originalWidth, $originalHeight, $targetWidth, $aspectRatio)
 	];
 }
 
-return function ($path, $target_width, $fit, $aspectRatio) {
-
+return function ($path, $target_width, $fit, $aspectRatio, $output) {
 	list($source_width, $source_height, $source_type) = getimagesize($path);
 
 	['w' => $dst_width, 'h' => $dst_height] = getNewSize($source_width, $source_height, $target_width, $aspectRatio);
@@ -51,8 +50,6 @@ return function ($path, $target_width, $fit, $aspectRatio) {
 			$source_gdim = imagecreatefrompng($path);
 			break;
 	}
-
-
 
 	$source_aspect_ratio = $source_width / $source_height;
 	$desired_aspect_ratio = $dst_width / $dst_height;
@@ -107,13 +104,30 @@ return function ($path, $target_width, $fit, $aspectRatio) {
 		$dst_height
 	);
 
+	$output_type = $source_type;
 	/*
  * Render the image
  * Alternatively, you can save the image in file-system or database
  */
+	if (isset($output)) {
+		switch ($output) {
+			case "gif":
+				$output_type = IMAGETYPE_GIF;
+				break;
+			case "png":
+				$output_type = IMAGETYPE_PNG;
+				break;
+			case "jpg":
+				$output_type = IMAGETYPE_JPEG;
+				break;
+			default:
+				$output_type = $source_type;
+		}
+	}
 
-	header("Content-type: {$source_type}");
-	switch ($source_type) {
+
+	header("Content-type: {$output_type}");
+	switch ($output_type) {
 		case IMAGETYPE_GIF:
 			imagegif($desired_gdim);
 			break;
