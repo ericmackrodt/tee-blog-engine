@@ -1,30 +1,12 @@
 <?php
+
+use Pecee\SimpleRouter\SimpleRouter;
+
 define('PAGE_LIMIT', 8);
 
 function rebuildUrl($page)
 {
-  if (!isset($_GET["page"])) {
-    $_GET["page"] = "0";
-  }
-
-  $result = $_SERVER["PATH_INFO"] . "?";
-  $i = 0;
-  $count = count($_GET);
-  foreach ($_GET as $key => $value) {
-    if ($key == "page") {
-      $result .= "{$key}={$page}";
-    } else {
-      $result .= "{$key}={$value}";
-    }
-
-    if ($i > $count) {
-      $result .= "&";
-    }
-
-    $i++;
-  }
-
-  return $result;
+  return SimpleRouter::getUrl()->mergeParams(['page' => $page])->getRelativeUrl();
 }
 
 function createPagination($posts)
