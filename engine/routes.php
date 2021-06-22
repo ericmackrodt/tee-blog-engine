@@ -1,6 +1,8 @@
 <?php
 
 use Pecee\SimpleRouter\SimpleRouter;
+use Pecee\Http\Request;
+use Pecee\SimpleRouter\Exceptions\NotFoundHttpException;
 
 $renderPage = require "page-renderer.php";
 $renderHome = require "home-renderer.php";
@@ -9,6 +11,21 @@ $renderCategory = require "category-renderer.php";
 $renderTag = require "tag-renderer.php";
 $renderPosts = require "posts-renderer.php";
 $renderGallery = require "gallery-renderer.php";
+$renderNotFound = require "not-found-renderer.php";
+
+SimpleRouter::get('/not-found', function () use ($renderNotFound) {
+  return $renderNotFound();
+});
+
+SimpleRouter::error(function (Request $request, \Exception $exception) {
+  if ($exception instanceof PageNotFoundException) {
+    SimpleRouter::response()->redirect('/not-found');
+  }
+
+  if ($exception instanceof NotFoundHttpException && $exception->getCode() === 404) {
+    SimpleRouter::response()->redirect('/not-found');
+  }
+});
 
 SimpleRouter::get('/', function () use ($renderHome) {
   return $renderHome();
@@ -34,24 +51,8 @@ SimpleRouter::get('/post/{post}', function ($post) use ($renderPost) {
   return $renderPost($post);
 });
 
-// SimpleRouter::group(['defaultParameterRegex' => '/(.+)/is'], function () use ($renderPage) {
-//   SimpleRouter::get('/{parameter}', function ($parameter) use ($renderPage) {
-//     echo "comeon";
-//   });
-// });
-
-// SimpleRouter::get('/', function ($page) use ($renderPage) {
-//   echo var_dump($page);
-// })->setMatch('/(.+)/is');
-
 SimpleRouter::get('/{param}', function ($param = null) use ($renderPage) {
   return $renderPage($param);
 }, ['defaultParameterRegex' => '.+']);
 
-// SimpleRouter::get('/{page}*', function ($page) use ($renderPage) {
-//   echo var_dump($page);
-//   return $renderPage($page);
-// });
-
-// Start the routing
 SimpleRouter::start();

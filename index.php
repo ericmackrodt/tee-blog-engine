@@ -1,9 +1,9 @@
 <?php
 session_start();
 try {
-
   // the code that throws an exception
   require 'vendor/autoload.php';
+  require 'engine/exceptions.php';
   require 'engine/helpers.php';
   require 'engine/variant-selector.php';
   require 'engine/file-loader.php';
