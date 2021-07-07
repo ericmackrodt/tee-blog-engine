@@ -21,7 +21,7 @@ function getNewSize($originalWidth, $originalHeight, $targetWidth, $aspectRatio)
 		$height = floor(($h * $width) / $w);
 	}
 
-	if (!empty($targetWidth)) {
+	if (!empty($targetWidth) && $width > (int)$targetWidth) {
 		$width = (int)$targetWidth;
 	}
 
