@@ -12,9 +12,7 @@
       ?>
       <?php foreach ($categories as $id => $category) : ?>
         <?php $isLast = $i == $len - 1; ?>
-        <a href="/category?id=<?= $category->id ?>">
-          <?= $this->e($category->name) ?>
-        </a>
+        <a href="/category?id=<?= $category->id ?>"><?= $this->e($category->name) ?></a>
         <?php if (!$isLast) : ?>
           |
         <?php endif; ?>

@@ -14,5 +14,6 @@ $fit = $query["fit"];
 $width = $query["w"];
 $aspectRatio = $query["aspectRatio"];
 $output = $query["output"];
+$compression = $query["compression"] ? (int)$query["compression"] : null;
 
-$renderImage($path, $width, $fit, $aspectRatio, $output);
+$renderImage($path, $width, $fit, $aspectRatio, $output, $compression);

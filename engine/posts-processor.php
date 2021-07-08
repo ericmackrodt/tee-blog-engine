@@ -21,13 +21,21 @@ function getPostsList()
 
   // Get only summary (first lines of post)
   foreach ($folders as $slug) {
+    if (strtolower($slug) == ".ds_store") {
+      continue;
+    }
+
     $post_path = $BLOG_POSTS_PATH . "/{$slug}/";
     $file_path = $post_path . $config["post-filename"];
-    $md = file_get_contents($file_path);
+    try {
+      $md = file_get_contents($file_path);
+    } catch (Exception $error) {
+      continue;
+    }
     $object = YamlFrontMatter::parse($md);
 
     $tags = array_map(function ($t) {
-      $id = md5($t);
+      $id = md5(trim(strtolower($t)));
       return (object)[
         'id' => $id,
         'name' => $t,
@@ -35,7 +43,7 @@ function getPostsList()
     },  split($object->tags));
 
     $categories = array_map(function ($c) {
-      $id = md5($c);
+      $id = md5(trim(strtolower($c)));
       return (object)[
         'id' => $id,
         'name' => $c,

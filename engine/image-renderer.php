@@ -34,7 +34,7 @@ function getNewSize($originalWidth, $originalHeight, $targetWidth, $aspectRatio)
 	];
 }
 
-return function ($path, $target_width, $fit, $aspectRatio, $output) {
+return function ($path, $target_width, $fit, $aspectRatio, $output, $compression) {
 	list($source_width, $source_height, $source_type) = getimagesize($path);
 
 	['w' => $dst_width, 'h' => $dst_height] = getNewSize($source_width, $source_height, $target_width, $aspectRatio);
@@ -125,17 +125,20 @@ return function ($path, $target_width, $fit, $aspectRatio, $output) {
 		}
 	}
 
+	if (!isset($compression)) {
+		$compression = 100;
+	}
 
 	header("Content-type: {$output_type}");
 	switch ($output_type) {
 		case IMAGETYPE_GIF:
-			imagegif($desired_gdim);
+			imagegif($desired_gdim, null, $compression);
 			break;
 		case IMAGETYPE_JPEG:
-			imagejpeg($desired_gdim);
+			imagejpeg($desired_gdim, null, $compression);
 			break;
 		case IMAGETYPE_PNG:
-			imagepng($desired_gdim);
+			imagepng($desired_gdim, null);
 			break;
 	}
 };
