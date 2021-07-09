@@ -104,41 +104,23 @@ return function ($path, $target_width, $fit, $aspectRatio, $output, $compression
 		$dst_height
 	);
 
-	$output_type = $source_type;
-	/*
- * Render the image
- * Alternatively, you can save the image in file-system or database
- */
-	if (isset($output)) {
-		switch ($output) {
-			case "gif":
-				$output_type = IMAGETYPE_GIF;
-				break;
-			case "png":
-				$output_type = IMAGETYPE_PNG;
-				break;
-			case "jpg":
-				$output_type = IMAGETYPE_JPEG;
-				break;
-			default:
-				$output_type = $source_type;
-		}
-	}
-
 	if (!isset($compression)) {
 		$compression = 100;
 	}
 
-	header("Content-type: {$output_type}");
-	switch ($output_type) {
-		case IMAGETYPE_GIF:
+	switch ($output) {
+		case "gif":
+			header("Content-type: image/gif");
 			imagegif($desired_gdim, null, $compression);
 			break;
-		case IMAGETYPE_JPEG:
-			imagejpeg($desired_gdim, null, $compression);
-			break;
-		case IMAGETYPE_PNG:
+		case "png":
+			header("Content-type: image/png");
 			imagepng($desired_gdim, null);
+			break;
+		case "jpg":
+		default:
+			header("Content-type: image/jpeg");
+			imagejpeg($desired_gdim, null, $compression);
 			break;
 	}
 };
