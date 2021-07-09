@@ -7,20 +7,20 @@ function getPost(string $slug)
   list('object' => $object, 'post_path' => $post_path) = loadPostMd($slug);
 
   $tags = array_map(function ($t) {
-    $id = md5($t);
+    $id = md5(trim(strtolower($t)));
     return (object)[
       'id' => $id,
       'name' => $t,
     ];
-  },  split($object->tags));
+  },  explode(',', $object->tags));
 
   $categories = array_map(function ($c) {
-    $id = md5($c);
+    $id = md5(trim(strtolower($c)));
     return (object)[
       'id' => $id,
       'name' => $c,
     ];
-  }, split($object->category));
+  }, explode(',', $object->category));
 
   $templates->addData(
     [
