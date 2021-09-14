@@ -3,6 +3,7 @@
         "league/plates": "^3.4",
         "pecee/simple-router": "^4.3.6.1",
         "spatie/yaml-front-matter": "^2.0",
-        "ua-parser/uap-php": "^3.9"
+        "ua-parser/uap-php": "^3.9",
+        "theiconic/php-ga-measurement-protocol": "^2.9"
     }
 }

@@ -7,10 +7,16 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'UAParser\\' => array($vendorDir . '/ua-parser/uap-php/src'),
+    'TheIconic\\Tracking\\GoogleAnalytics\\' => array($vendorDir . '/theiconic/php-ga-measurement-protocol/src'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Spatie\\YamlFrontMatter\\' => array($vendorDir . '/spatie/yaml-front-matter/src'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src', $vendorDir . '/psr/http-factory/src'),
+    'Psr\\Http\\Client\\' => array($vendorDir . '/psr/http-client/src'),
     'Pecee\\' => array($vendorDir . '/pecee/simple-router/src/Pecee'),
     'League\\Plates\\' => array($vendorDir . '/league/plates/src'),
+    'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
+    'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
+    'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Composer\\CaBundle\\' => array($vendorDir . '/composer/ca-bundle/src'),
 );

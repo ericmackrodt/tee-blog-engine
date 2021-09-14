@@ -12,3 +12,8 @@ function joinPaths(...$parts)
 
   return $path;
 }
+
+function getRequirePath($input)
+{
+  return joinPaths(__DIR__, "/../", $input);
+}
